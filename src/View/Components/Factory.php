@@ -10,22 +10,22 @@ declare(strict_types=1);
  */
 namespace FriendsOfHyperf\PrettyConsole\View\Components;
 
-use FriendsOfHyperf\PrettyConsole\OutputStyle;
 use InvalidArgumentException;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 class Factory
 {
     /**
      * The output interface implementation.
      *
-     * @var OutputStyle
+     * @var SymfonyStyle
      */
     protected $output;
 
     /**
      * Creates a new factory instance.
      *
-     * @param OutputStyle $output
+     * @param SymfonyStyle $output
      */
     public function __construct($output)
     {

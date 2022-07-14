@@ -10,11 +10,11 @@ declare(strict_types=1);
  */
 namespace FriendsOfHyperf\PrettyConsole\View\Components;
 
-use FriendsOfHyperf\PrettyConsole\OutputStyle;
 use FriendsOfHyperf\PrettyConsole\QuestionHelper;
 use Hyperf\Contract\Arrayable;
 use ReflectionClass;
 use Symfony\Component\Console\Helper\SymfonyQuestionHelper;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
 use function Termwind\render;
 use function Termwind\renderUsing;
@@ -24,7 +24,7 @@ abstract class Component
     /**
      * The output style implementation.
      *
-     * @var OutputStyle
+     * @var SymfonyStyle
      */
     protected $output;
 
@@ -38,7 +38,7 @@ abstract class Component
     /**
      * Creates a new component instance.
      *
-     * @param OutputStyle $output
+     * @param SymfonyStyle $output
      */
     public function __construct($output)
     {
@@ -108,7 +108,7 @@ abstract class Component
      */
     protected function usingQuestionHelper($callable)
     {
-        $property = with(new ReflectionClass(OutputStyle::class))
+        $property = with(new ReflectionClass(SymfonyStyle::class))
             ->getParentClass()
             ->getProperty('questionHelper');
 
