@@ -10,7 +10,6 @@ declare(strict_types=1);
  */
 namespace FriendsOfHyperf\PrettyConsole\View\Components;
 
-use FriendsOfHyperf\PrettyConsole\Contracts\NewLineAware;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class Line extends Component
@@ -54,7 +53,7 @@ class Line extends Component
         ]);
 
         $this->renderView('line', array_merge(static::$styles[$style], [
-            'marginTop' => ($this->output instanceof NewLineAware && $this->output->newLineWritten()) ? 0 : 1,
+            'marginTop' => 0,
             'content' => $string,
         ]), $verbosity);
     }
