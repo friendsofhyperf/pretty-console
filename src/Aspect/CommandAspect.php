@@ -28,10 +28,14 @@ class CommandAspect extends AbstractAspect
     {
         $instance = $proceedingJoinPoint->getInstance();
         $reflection = new ReflectionObject($instance);
+        $output = $proceedingJoinPoint->getArguments()[1];
+        $factory = new Factory($output);
+        $properties = $reflection->getProperties();
 
-        if ($reflection->hasProperty('components')) {
-            $output = $proceedingJoinPoint->getArguments()[1];
-            $reflection->getProperty('components')->setValue($instance, new Factory($output));
+        foreach ($properties as $property) {
+            if ($property->getType() && $property->getType()->getName() == Factory::class) {
+                $property->setValue($instance, $factory);
+            }
         }
 
         return $proceedingJoinPoint->process();
