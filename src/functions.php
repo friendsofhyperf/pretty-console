@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @contact  huangdijia@gmail.com
  */
 if (! function_exists('resolve')) {
-    function resolve($name, array $parameters = [])
+    function resolve(string $name, array $parameters = [])
     {
         return app($name, $parameters);
     }
