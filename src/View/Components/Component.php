@@ -15,7 +15,6 @@ use Hyperf\Contract\Arrayable;
 use ReflectionClass;
 use Symfony\Component\Console\Helper\SymfonyQuestionHelper;
 use Symfony\Component\Console\Style\SymfonyStyle;
-
 use function Termwind\render;
 use function Termwind\renderUsing;
 
@@ -109,7 +108,7 @@ abstract class Component
     protected function usingQuestionHelper($callable)
     {
         $property = with(new ReflectionClass(SymfonyStyle::class))
-            ->getParentClass()
+            // ->getParentClass()
             ->getProperty('questionHelper');
 
         $property->setAccessible(true);
