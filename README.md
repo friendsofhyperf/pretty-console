@@ -17,14 +17,14 @@ composer require friendsofhyperf/pretty-console
 
 ```php
 <?php
-use FriendsOfHyperf\PrettyConsole\View\Components\Factory;
+use FriendsOfHyperf\PrettyConsole\Traits\Prettyable;
 use Hyperf\Command\Command as HyperfCommand;
 use Hyperf\Command\Annotation\Command;
 
 #[Command]
 class FooCommand extends HyperfCommand
 {
-    protected Factory $components;
+    use Prettyable;
 
     public function function handle()
     {
